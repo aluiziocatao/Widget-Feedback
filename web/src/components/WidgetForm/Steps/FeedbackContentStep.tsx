@@ -1,7 +1,7 @@
 import { ArrowLeft } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { CloseButton } from "../../CloseButton";
-import { FeedbackType, feedbackTypes } from "../Index";
+import { FeedbackType, feedbackTypes } from "../index";
 import { ScreenshotButton } from "../ScreenshotButton";
 import { api } from '../../../../lib/api';
 import { Loading } from "../../Loading";
