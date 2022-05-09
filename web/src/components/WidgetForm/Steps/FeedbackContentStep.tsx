@@ -1,4 +1,4 @@
-import { AppWindow, ArrowLeft } from "phosphor-react";
+import { ArrowLeft } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { CloseButton } from "../../CloseButton";
 import { FeedbackType, feedbackTypes } from "../Index";
@@ -17,7 +17,7 @@ export function FeedbackContentStep({
     onFeedbackRestartRequested,
     onFeedbackSent,
     }: FeedbackContentStepProps){
-    const [screenshot, setScreenshot] = useState<String | null>(null);
+    const [screenshot, setScreenshot] = useState<string | null>(null);
     const [comment, setComment] = useState('');
     const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
