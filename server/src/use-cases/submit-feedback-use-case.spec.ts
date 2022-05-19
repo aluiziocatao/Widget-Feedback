@@ -20,7 +20,7 @@ describe('Submit feedback', () => {
         expect(sendMailSpy).toHaveBeenCalled();
     });
 
-    it('should nor be able to submit a feedback without type', async () => {     
+    it('should not be able to submit a feedback without type', async () => {     
         await expect(submitFeedback.execute({
             type: '',
             comment: 'example comment',
@@ -28,7 +28,7 @@ describe('Submit feedback', () => {
         })).rejects.toThrow();    
     });
 
-    it('should nor be able to submit a feedback without comment', async () => {     
+    it('should not be able to submit a feedback without comment', async () => {     
         await expect(submitFeedback.execute({
             type: 'BUG',
             comment: '',
@@ -36,11 +36,11 @@ describe('Submit feedback', () => {
         })).rejects.toThrow();    
     });
     
-    it('should nor be able to submit a feedback with an invalid screenshot', async () => {     
+    it('should not be able to submit a feedback with an invalid screenshot', async () => {     
         await expect(submitFeedback.execute({
             type: 'BUG',
             comment: 'example comment',
-            screenshot: 'test.jpg',
+            screenshot: 'test.png',
         })).rejects.toThrow();    
     });
 });

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for submit-feedback-use-case.ts</title>
+    <title>Code coverage report for submit-feedback-use-case.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> submit-feedback-use-case.ts</h1>
+        <h1><a href="index.html">All files</a> submit-feedback-use-case.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/39</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/39</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
@@ -100,10 +100,23 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -120,71 +133,55 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { MailAdapter } from "../adapters/mail-adapter";
-import { FeedbacksRepository } from "../repositories/feedbacks-repository";
-&nbsp;
-export interface SubmitFeedbackUseCaseRequest{
-    type: string;
-    comment: string;
-    screenshot?: string;
-}
-&nbsp;
-export class SubmitFeedbackUseCase {
-    constructor(
-        private feedbackRepository: FeedbacksRepository,
-        private mailAdapter: MailAdapter
-    ){}
-&nbsp;
-    async execute(request: SubmitFeedbackUseCaseRequest){
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SubmitFeedbackUseCase = void 0;
+class SubmitFeedbackUseCase {
+    constructor(feedbackRepository, mailAdapter) {
+        this.feedbackRepository = feedbackRepository;
+        this.mailAdapter = mailAdapter;
+    }
+    async execute(request) {
         const { type, comment, screenshot } = request;
-&nbsp;
-        if(!type){
-            throw new Error('Type is required.')
+        if (!type) {
+            throw new Error('Type is required.');
         }
-&nbsp;
-        if(!comment){
-            throw new Error('Comment is required.')
+        if (!comment) {
+            throw new Error('Comment is required.');
         }
-&nbsp;
-        if(screenshot &amp;&amp; !screenshot.startsWith('data:image/png;base64')){
-            throw new Error('Invalid screenshot format.')
+        if (screenshot &amp;&amp; !screenshot.startsWith('data:image/png;base64')) {
+            throw new Error('Invalid screenshot format.');
         }
-&nbsp;
         await this.feedbackRepository.create({
             type,
             comment,
             screenshot
-        })
-&nbsp;
-        
+        });
+        await this.mailAdapter.sendMail({
+            subject: 'Novo feedback',
+            body: [
+                `&lt;div style="font-family: sans-serif; font-size: 16px; color: #111"&gt;`,
+                `&lt;p&gt;Tipo do Feedback: ${type}&lt;/p&gt;`,
+                `&lt;p&gt;Comentário: ${comment}&lt;/p&gt;`,
+                screenshot ? `&lt;img src="${screenshot}"&gt;`<span class="branch-0 cbranch-no" title="branch not covered" > : ``,</span>
+                `&lt;/div&gt;`
+            ].join('\n')
+        });
     }
-}</pre></td></tr></table></pre>
+}
+exports.SubmitFeedbackUseCase = SubmitFeedbackUseCase;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu May 05 2022 15:19:44 GMT-0500 (Horário Padrão do Acre)
+                at Thu May 19 2022 13:35:17 GMT-0500 (Horário Padrão do Acre)
             </div>
         <script src="prettify.js"></script>
         <script>
